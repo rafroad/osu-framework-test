@@ -11,7 +11,6 @@ using osu.Framework.Screens;
 using osuTK.Graphics;
 using osuTK.Graphics.ES20;
 using SixLabors.ImageSharp;
-using osuTK.Graphics;
 using osuTK;
 
 namespace game1_osu_framework.Game
