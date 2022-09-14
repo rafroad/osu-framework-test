@@ -39,10 +39,6 @@ namespace game1_osu_framework.Game
                 {
                     Anchor = Anchor.Centre,  
                 },
-                new button1()
-                {
-                    Anchor=Anchor.Centre,
-                }
             };
         }
     }

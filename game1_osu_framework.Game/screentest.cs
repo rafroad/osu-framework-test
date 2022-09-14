@@ -1,4 +1,6 @@
+using System;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
@@ -23,13 +25,12 @@ namespace game1_osu_framework.Game
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
         }
-        public void Click(MouseButton button)
-        {
-        
-        }
+        public float ClickCount;
+        public SpriteText Pc;
         [BackgroundDependencyLoader]
         private void load()
         {
+            string cc = ClickCount.ToString();
             InternalChildren = new Drawable[]
             {
                 new BasicTextBox()
@@ -57,6 +58,18 @@ namespace game1_osu_framework.Game
                     Origin= Anchor.Centre,
                     Size=new Vector2(200, 30),
                     Y=60,
+                    FlashColour = FrameworkColour.Green,
+                    Action = () => Pc.Spin(20,RotationDirection.Clockwise),
+
+                },
+                Pc = new SpriteText()
+                {
+                    Text=cc,
+                    Colour=Colour4.AliceBlue,
+                    Anchor = Anchor.Centre,
+                    Origin= Anchor.Centre,
+                    Size=new Vector2(200, 30),
+                    Y=90,
                 },
             };
 
