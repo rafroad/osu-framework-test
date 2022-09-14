@@ -1,0 +1,11 @@
+﻿{
+  "solution": {
+    "path": "game1_osu_framework.sln",
+    "projects": [
+      "game1_osu_framework.Desktop\\game1_osu_framework.Desktop.csproj",
+      "game1_osu_framework.Game\\game1_osu_framework.Game.csproj",
+      "game1_osu_framework.Game.Tests\\game1_osu_framework.Game.Tests.csproj",
+      "game1_osu_framework.Resources\\game1_osu_framework.Resources.csproj"
+    ]
+  }
+}
