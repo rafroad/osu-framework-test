@@ -38,6 +38,10 @@ namespace game1_osu_framework.Game
                 new screentest
                 {
                     Anchor = Anchor.Centre,  
+                },
+                new button1()
+                {
+                    Anchor=Anchor.Centre,
                 }
             };
         }

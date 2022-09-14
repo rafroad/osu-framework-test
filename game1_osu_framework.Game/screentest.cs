@@ -11,6 +11,7 @@ using osu.Framework.Input.Events;
 using osu.Framework.Input.StateChanges;
 using osu.Framework.Screens;
 using osuTK;
+using osuTK.Input;
 using SixLabors.ImageSharp;
 
 namespace game1_osu_framework.Game
@@ -21,6 +22,10 @@ namespace game1_osu_framework.Game
         {
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
+        }
+        public void Click(MouseButton button)
+        {
+        
         }
         [BackgroundDependencyLoader]
         private void load()
@@ -54,6 +59,7 @@ namespace game1_osu_framework.Game
                     Y=60,
                 },
             };
+
             
         }
     }
