@@ -7,20 +7,16 @@ using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Graphics;
 using osuTK;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Allocation;
 
 namespace game1_osu_framework.Game
 {
     public class popup : CompositeDrawable
     {
-        public void Popupconfig()
-        {
-            Anchor = Anchor.Centre;
-            Origin = Anchor.Centre;
-        }
-        public Popover Pp1;
+        private Popover po;
         private void load()
         {
-            Pp1 = new BasicPopover()
+            new BasicPopover()
             {
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
@@ -45,7 +41,7 @@ namespace game1_osu_framework.Game
                            X=-100,
                            Y=-200,
                            Size=new Vector2(200, 30),
-                           Action=()=>Pp1.Hide(),
+                           Action=()=>po.Hide(),
 
                         }
 

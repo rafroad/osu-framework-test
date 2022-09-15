@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using FFmpeg.AutoGen;
+using NuGet.Configuration;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Animations;
@@ -31,7 +32,7 @@ namespace game1_osu_framework.Game
         private BasicTextBox btb;
         private BasicPasswordTextBox bptb;
         private Sprite sp1;
-        popup pp1 = new popup();
+        popup pp1=new popup();
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
@@ -67,7 +68,6 @@ namespace game1_osu_framework.Game
                     Action = () => pp1.Show(),
 
                 },
-
             };
         }
     }
