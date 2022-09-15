@@ -12,19 +12,20 @@ using osuTK.Graphics;
 using osuTK.Graphics.ES20;
 using SixLabors.ImageSharp;
 using osuTK;
+using osu.Framework.Graphics.Textures;
 
 namespace game1_osu_framework.Game
 {
     public class MainScreen : Screen
     {
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(TextureStore textures)
         {
             InternalChildren = new Drawable[]
             {
-                new Box
+                new Sprite
                 {
-                    Colour = Color4.Blue,
+                    Texture=textures.Get("mc_bg"),
                     RelativeSizeAxes = Axes.Both,
                 },
                 new SpriteText
@@ -34,6 +35,13 @@ namespace game1_osu_framework.Game
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
                     Font = FontUsage.Default.With(size: 100)
+                },
+                new Sprite
+                {
+                   Y=160,
+                   Texture=textures.Get("logo"),
+                   Anchor = Anchor.TopCentre,
+                   Origin = Anchor.TopCentre,
                 },
                 new screentest
                 {

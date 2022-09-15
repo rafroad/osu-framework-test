@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Animations;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
@@ -25,15 +26,16 @@ namespace game1_osu_framework.Game
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
         }
-        public float ClickCount;
-        public SpriteText Pc;
+        private BasicPopover bp;
+        private BasicTextBox btb;
+        private BasicPasswordTextBox bptb;
+        private Sprite sp1;
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(TextureStore textures)
         {
-            string cc = ClickCount.ToString();
             InternalChildren = new Drawable[]
             {
-                new BasicTextBox()
+                btb=new BasicTextBox()
                 {
                     Colour=Colour4.AliceBlue,
                     Anchor = Anchor.Centre,
@@ -41,7 +43,7 @@ namespace game1_osu_framework.Game
                     Size=new Vector2(200, 30),
                     PlaceholderText="user"
                 },
-                new BasicPasswordTextBox()
+                bptb=new BasicPasswordTextBox()
                 {
                     Colour=Colour4.AliceBlue,
                     Anchor = Anchor.Centre,
@@ -59,17 +61,37 @@ namespace game1_osu_framework.Game
                     Size=new Vector2(200, 30),
                     Y=60,
                     FlashColour = FrameworkColour.Green,
-                    Action = () => Pc.Spin(20,RotationDirection.Clockwise),
+                    Action = () => bp.Show(),
 
                 },
-                Pc = new SpriteText()
+                bp = new BasicPopover()
                 {
-                    Text=cc,
-                    Colour=Colour4.AliceBlue,
-                    Anchor = Anchor.Centre,
-                    Origin= Anchor.Centre,
-                    Size=new Vector2(200, 30),
-                    Y=90,
+                   new Box
+                   {
+                      Colour=Colour4.SlateGray,
+                      Anchor = Anchor.Centre,
+                      Origin= Anchor.Centre,
+                      Size=new Vector2(200, 200),
+                   },
+                   new BasicButton()
+                   {
+                      Colour=Colour4.Red,
+                      Anchor = Anchor.Centre,
+                      Origin= Anchor.Centre,
+                      Size=new Vector2(50, 50),
+                      FlashColour= Colour4.DarkRed,
+                      X=-70,
+                      Y=-70,
+                      Action = () => bp.Hide(),
+                      
+                   },
+                   new SpriteText()
+                   {
+                     Text="Confirm?",
+                     Colour=Colour4.AliceBlue,
+                     Anchor = Anchor.Centre,
+                     Origin= Anchor.Centre,
+                   },
                 },
             };
 
