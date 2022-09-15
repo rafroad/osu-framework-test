@@ -1,1 +1,2 @@
-# game1_osu_framework
+# osu framework test
+this is just a test 
