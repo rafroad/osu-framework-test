@@ -34,10 +34,13 @@ namespace game1_osu_framework.Game
         private Sprite sp1;
         private Popover po;
         private ScreenStack screenStack;
-        screen2 pp1 = new screen2();
+        private ScreenStack screenStack2;
+        private Screen screen1;
+        private IScreen iscreen;
+        screen2 screen2 = new screen2();
+        MainScreen mainScreen;
         [BackgroundDependencyLoader]
-
-        private void load(TextureStore textures)
+        private void load()
         {
             screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
             Button b1;
@@ -69,12 +72,12 @@ namespace game1_osu_framework.Game
                     Size = new Vector2(200, 30),
                     Y = 60,
                     FlashColour = FrameworkColour.Green,
-                    Action = () => screenStack.Push(new screen2()),
-
+                    Action = () => Push(),
                 },
             };
         }
-        protected void Push()
+        private ScreenStack sc;
+        public void Push()
         {
             screenStack.Push(new screen2());
         }

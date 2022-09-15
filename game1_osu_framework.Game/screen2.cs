@@ -19,44 +19,15 @@ namespace game1_osu_framework.Game
 {
     public class screen2 : Screen
     {
-        private ScreenStack screenStack;
-        [BackgroundDependencyLoader]
-        private void load(TextureStore textures)
+        public screen2()
         {
-            InternalChildren = new Drawable[]
+            AddInternal(new Box
             {
-                new Sprite
-                {
-                    Texture=textures.Get("mc_bg"),
-                    RelativeSizeAxes = Axes.Both,
-                    RelativePositionAxes = Axes.Both,
-                    TextureRelativeSizeAxes= Axes.Both,
-                    Origin=Anchor.Centre,
-                    Anchor=Anchor.Centre,
-                },
-                new SpriteText
-                {
-                    Text = "success",
-                    Anchor= Anchor.Centre,
-                    Origin=Anchor.Centre,
-                },
-                new BasicButton()
-                {
-                    Text = "return",
-                    Colour = Colour4.AliceBlue,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(200, 30),
-                    Y = 60,
-                    FlashColour = FrameworkColour.Green,
-                    Action = () => Push(),
-
-                },
-            };
-        }
-        protected void Push()
-        {
-            screenStack.Push(new MainScreen());
+                RelativeSizeAxes = Axes.Both,
+                Colour = Color4.Tomato,
+                Origin = Anchor.Centre,
+                Anchor = Anchor.Centre
+            });
         }
     }
 }
