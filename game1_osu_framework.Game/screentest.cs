@@ -32,10 +32,14 @@ namespace game1_osu_framework.Game
         private BasicTextBox btb;
         private BasicPasswordTextBox bptb;
         private Sprite sp1;
-        popup pp1=new popup();
+        private Popover po;
+        private ScreenStack screenStack;
+        screen2 pp1 = new screen2();
         [BackgroundDependencyLoader]
+
         private void load(TextureStore textures)
         {
+            screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
             Button b1;
             InternalChildren = new Drawable[]
             {
@@ -65,13 +69,18 @@ namespace game1_osu_framework.Game
                     Size = new Vector2(200, 30),
                     Y = 60,
                     FlashColour = FrameworkColour.Green,
-                    Action = () => pp1.Show(),
+                    Action = () => screenStack.Push(new screen2()),
 
                 },
             };
         }
+        protected void Push()
+        {
+            screenStack.Push(new screen2());
+        }
     }
 }
+
 
 
 
