@@ -27,6 +27,10 @@ namespace game1_osu_framework.Game
                 {
                     Texture=textures.Get("mc_bg"),
                     RelativeSizeAxes = Axes.Both,
+                    RelativePositionAxes = Axes.Both,
+                    TextureRelativeSizeAxes= Axes.Both,
+                    Origin=Anchor.Centre,
+                    Anchor=Anchor.Centre,
                 },
                 new SpriteText
                 {
