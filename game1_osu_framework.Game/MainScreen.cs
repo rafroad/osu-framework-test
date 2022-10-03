@@ -22,6 +22,7 @@ namespace game1_osu_framework.Game
     {
         private BasicTextBox btb;
         private BasicPasswordTextBox bptb;
+        private Box bg;
         private Sprite sp1;
         private Popover po;
         private ScreenStack stack;
@@ -31,6 +32,9 @@ namespace game1_osu_framework.Game
         private IScreen iscreen;
         private MainScreen mainScreen;
         private BasicPopover wrong;
+        private SpriteText clock;
+        private Visual.notificationoverlay notif;
+        private BasicButton notifb;
         string username;
         string password;
         [BackgroundDependencyLoader]
@@ -38,9 +42,10 @@ namespace game1_osu_framework.Game
         {
             InternalChildren = new Drawable[]
             {
-                new Box
+                bg=new Box
                 {
-                    Colour=Colour4.AntiqueWhite,
+                    //Texture=textures.Get("mc_bg"),
+                    Colour=Colour4.BlueViolet,
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
                     TextureRelativeSizeAxes= Axes.Both,
@@ -49,11 +54,11 @@ namespace game1_osu_framework.Game
                 },
                 new SpriteText
                 {
-                    Y = 20,
+                    Y = 30,
                     Text = "Login",
                     Anchor = Anchor.TopCentre,
                     Origin = Anchor.TopCentre,
-                    Font = FontUsage.Default.With(size: 100)
+                    Font = FontUsage.Default.With(size: 70)
                 },
                 new Sprite
                 {
@@ -96,13 +101,28 @@ namespace game1_osu_framework.Game
                     Colour = Colour4.DarkRed,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
-                    Size = new Vector2(90, 30),
-                    Y = -370,
-                    X=-635,
+                    Size = new Vector2(200, 30),
+                    Y = 120,
                     FlashColour = Colour4.DarkRed,
                     Action = () => Exit(),
+                },
+                notifb=new BasicButton
+                {
+                    Text = "notification",
+                    Colour = Colour4.DarkRed,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 30),
+                    Y = 150,
+                    FlashColour = Colour4.Green,
+                    Action = () =>  Shownotif(),
                 }
             };
+        }
+        protected override void Update()
+        {
+            base.Update();
+            bb1.FlashColour = Color4.Red;
         }
         public void Push()
         {
@@ -113,11 +133,22 @@ namespace game1_osu_framework.Game
                 this.Push(screen1 = new screentest { RelativeSizeAxes = Axes.Both });
                 bptb.Text = string.Empty;
                 btb.Text = string.Empty;
+                bb1.FlashColour = Color4.Green;
+            }
+            else
+            {
+                bptb.Text = string.Empty;
+                btb.Text = string.Empty;
             }
         }
         public void Exit()
         {
             Exit();
+        }
+        public void Shownotif()
+        {
+            notif.Show();
+            this.Show();
         }
     }
 }

@@ -17,17 +17,31 @@ using System;
 
 namespace game1_osu_framework.Game
 {
-    public class screen2p: Screen
+    public class screen2: Screen
     {
-      public screen2p()
+        private Visual.notificationoverlay notif;
+        private Box bg;
+        private BasicMenu bm;
+      public screen2()
         {
-            AddInternal(new Box
+            InternalChildren = new Drawable[]
             {
-                RelativeSizeAxes = Axes.Both,
-                Colour = Color4.Tomato,
-                Origin = Anchor.Centre,
-                Anchor = Anchor.Centre
-            });
+                bg=new Box
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Colour = Color4.Tomato,
+                    Origin = Anchor.Centre,
+                    Anchor = Anchor.Centre
+                },
+                bm=new BasicMenu(Direction.Horizontal,false)
+                {
+                     Size = new Vector2(200, 30),
+                     Origin = Anchor.Centre,
+                     Anchor= Anchor.Centre,
+                     Colour = Color4.Violet,
+    
+                },
+            };
         }
     }
 }

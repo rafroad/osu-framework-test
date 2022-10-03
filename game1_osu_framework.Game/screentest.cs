@@ -28,7 +28,8 @@ namespace game1_osu_framework.Game
 {
     public class screentest : Screen
     {
-        private BasicButton b1;
+        private BasicButton back;
+        private BasicButton new_screen;
         private ScreenStack stack;
         [BackgroundDependencyLoader]
         private void load()
@@ -52,9 +53,9 @@ namespace game1_osu_framework.Game
                     Origin = Anchor.TopCentre,
                     Font = FontUsage.Default.With(size: 100)
                 },
-                b1=new BasicButton()
+                back=new BasicButton()
                 {
-                    Text = "back",
+                    Text = "main screen",
                     Colour = Colour4.AliceBlue,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
@@ -63,6 +64,17 @@ namespace game1_osu_framework.Game
                     FlashColour = FrameworkColour.Green,
                     Action = () => this.Push(new MainScreen()),
                 },
+                new_screen=new BasicButton()
+                {
+                    Text = "switch",
+                    Colour = Colour4.AliceBlue,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 30),
+                    Y = 90,
+                    FlashColour = FrameworkColour.Green,
+                    Action = () => this.Push(new screen2())
+                }
             };
         }
     }
