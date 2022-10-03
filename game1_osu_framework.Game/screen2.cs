@@ -17,9 +17,9 @@ using System;
 
 namespace game1_osu_framework.Game
 {
-    public class screen2 : Screen
+    public class screen2p: Screen
     {
-        public screen2()
+      public screen2p()
         {
             AddInternal(new Box
             {

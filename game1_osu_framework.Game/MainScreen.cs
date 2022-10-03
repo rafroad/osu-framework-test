@@ -13,19 +13,34 @@ using osuTK.Graphics.ES20;
 using SixLabors.ImageSharp;
 using osuTK;
 using osu.Framework.Graphics.Textures;
+using osu.Framework;
+using osu.Framework.Testing;
 
 namespace game1_osu_framework.Game
 {
     public class MainScreen : Screen
     {
+        private BasicTextBox btb;
+        private BasicPasswordTextBox bptb;
+        private Sprite sp1;
+        private Popover po;
+        private ScreenStack stack;
+        private BasicButton bb1;
+        private BasicButton exitbutton;
+        private screentest screen1;
+        private IScreen iscreen;
+        private MainScreen mainScreen;
+        private BasicPopover wrong;
+        string username;
+        string password;
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
             InternalChildren = new Drawable[]
             {
-                new Sprite
+                new Box
                 {
-                    Texture=textures.Get("mc_bg"),
+                    Colour=Colour4.AntiqueWhite,
                     RelativeSizeAxes = Axes.Both,
                     RelativePositionAxes = Axes.Both,
                     TextureRelativeSizeAxes= Axes.Both,
@@ -47,11 +62,62 @@ namespace game1_osu_framework.Game
                    Anchor = Anchor.TopCentre,
                    Origin = Anchor.TopCentre,
                 },
-                new screentest
+                btb = new BasicTextBox
                 {
-                    Anchor = Anchor.Centre,  
+                    Colour = Colour4.AliceBlue,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 30),
+                    PlaceholderText = "user"
                 },
+                bptb = new BasicPasswordTextBox
+                {
+                    Colour = Colour4.AliceBlue,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 30),
+                    PlaceholderText = "password",
+                    Y = 30,
+                },
+                bb1=new BasicButton
+                {
+                    Text = "Login",
+                    Colour = Colour4.AliceBlue,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(200, 30),
+                    Y = 60,
+                    FlashColour = FrameworkColour.Green,
+                    Action = () => Push(),
+                },
+                exitbutton = new BasicButton
+                {
+                    Text = "exit",
+                    Colour = Colour4.DarkRed,
+                    Anchor = Anchor.Centre,
+                    Origin = Anchor.Centre,
+                    Size = new Vector2(90, 30),
+                    Y = -370,
+                    X=-635,
+                    FlashColour = Colour4.DarkRed,
+                    Action = () => Exit(),
+                }
             };
+        }
+        public void Push()
+        {
+            username = btb.Text;
+            password = bptb.Text;
+            if(username == "test" && password == "test")
+            {
+                this.Push(screen1 = new screentest { RelativeSizeAxes = Axes.Both });
+                bptb.Text = string.Empty;
+                btb.Text = string.Empty;
+            }
+        }
+        public void Exit()
+        {
+            Exit();
         }
     }
 }

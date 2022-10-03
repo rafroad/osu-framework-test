@@ -19,67 +19,51 @@ using osu.Framework.Screens;
 using osuTK;
 using osuTK.Input;
 using SixLabors.ImageSharp;
+using osu.Framework.Audio;
+using osu.Framework.Audio.Track;
+using osu.Framework;
+using osuTK.Graphics;
 
 namespace game1_osu_framework.Game
 {
-    public class screentest : CompositeDrawable
+    public class screentest : Screen
     {
-        public void Screentest2()
-        {
-            Anchor = Anchor.Centre;
-            Origin = Anchor.Centre;
-        }
-        private BasicTextBox btb;
-        private BasicPasswordTextBox bptb;
-        private Sprite sp1;
-        private Popover po;
-        private ScreenStack screenStack;
-        private ScreenStack screenStack2;
-        private Screen screen1;
-        private IScreen iscreen;
-        screen2 screen2 = new screen2();
-        MainScreen mainScreen;
+        private BasicButton b1;
+        private ScreenStack stack;
         [BackgroundDependencyLoader]
         private void load()
         {
-            screenStack = new ScreenStack { RelativeSizeAxes = Axes.Both };
-            Button b1;
             InternalChildren = new Drawable[]
             {
-                btb = new BasicTextBox()
+                new Box
                 {
-                    Colour = Colour4.AliceBlue,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(200, 30),
-                    PlaceholderText = "user"
+                    Colour=Colour4.Blue,
+                    RelativeSizeAxes = Axes.Both,
+                    RelativePositionAxes = Axes.Both,
+                    TextureRelativeSizeAxes= Axes.Both,
+                    Origin=Anchor.Centre,
+                    Anchor=Anchor.Centre,
                 },
-                bptb = new BasicPasswordTextBox()
+                new SpriteText()
                 {
-                    Colour = Colour4.AliceBlue,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Size = new Vector2(200, 30),
-                    PlaceholderText = "password",
-                    Y = 30,
+                    Y = 20,
+                    Text = "success",
+                    Anchor = Anchor.TopCentre,
+                    Origin = Anchor.TopCentre,
+                    Font = FontUsage.Default.With(size: 100)
                 },
-                new BasicButton()
+                b1=new BasicButton()
                 {
-                    Text = "Login",
+                    Text = "back",
                     Colour = Colour4.AliceBlue,
                     Anchor = Anchor.Centre,
                     Origin = Anchor.Centre,
                     Size = new Vector2(200, 30),
                     Y = 60,
                     FlashColour = FrameworkColour.Green,
-                    Action = () => Push(),
+                    Action = () => this.Push(new MainScreen()),
                 },
             };
-        }
-        private ScreenStack sc;
-        public void Push()
-        {
-            screenStack.Push(new screen2());
         }
     }
 }
